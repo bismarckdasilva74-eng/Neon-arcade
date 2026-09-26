@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arcade de Néon</title>
+  <style>
+    body {
+      margin: 0;
+      background: #080018;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+      margin-top: 30px;
+    }
+
+    #game {
+      width: 90%;
+      max-width: 500px;
+      height: 350px;
+      margin: 20px auto;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 20px #00ffff;
+      position: relative;
+      overflow: hidden;
+      background: #10002b;
+    }
+
+    #player {
+      width: 40px;
+      height: 40px;
+      background: #ff00ff;
+      box-shadow: 0 0 20px #ff00ff;
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+    }
+
+    #target {
+      width: 30px;
+      height: 30px;
+      background: #00ff66;
+      box-shadow: 0 0 20px #00ff66;
+      position: absolute;
+      top: 30px;
+      left: 40%;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: 0;
+      border-radius: 8px;
+      background: #00ffff;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🎮 ARCADE DE NÉON</h1>
+  <p>Pontos: <span id="score">0</span></p>
+
+  <div id="game">
+    <div id="player"></div>
+    <div id="target"></div>
+  </div>
+
+  <button onclick="startGame()">COMEÇAR</button>
+
+  <script>
+    let score = 0;
+
+    function startGame() {
+      score = 0;
+      document.getElementById("score").textContent = score;
+
+      const target = document.getElementById("target");
+
+      target.onclick = function () {
+        score++;
+        document.getElementById("score").textContent = score;
+
+        target.style.left =
+          Math.floor(Math.random() * 90) + "%";
+
+        target.style.top =
+          Math.floor(Math.random() * 80) + "%";
+      };
+    }
+  </script>
+</body>
+</html>
